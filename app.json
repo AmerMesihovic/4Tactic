@@ -6,6 +6,12 @@
     "orientation": "portrait",
     "icon": "./assets/images/launch_screen.png",
     "userInterfaceStyle": "light",
+    "displayName": "demo",
+    "apiKey":"AIzaSyA37gaNm6Sh1SLYdVDHFVsFjSsPi-oYfLk",
+    "appName":"4Tactic",
+    "sott":"<put your sott>",
+    "verificationUrl":"https://auth.lrcontent.com/mobile/verification/index.html",
+    "resetPasswordUrl":"https://auth.lrcontent.com/mobile/verification/index.html",
     "splash": {
       "image": "./assets/images/launch_screen2.png",
       "resizeMode": "contain",
