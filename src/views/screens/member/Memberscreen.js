@@ -10,7 +10,6 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createMaterialBottomTabNavigator();
-
 const image = require("../../../../assets/images/imageGalery/image7.png");
 
 function Home() {
