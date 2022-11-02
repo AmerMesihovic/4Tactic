@@ -21,7 +21,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Galery from "../galery/GaleryScreen";
 
 const Stack = createNativeStackNavigator();
-const image = require('../../../../assets/images/imageGalery/image6.png')
+const image = require("../../../../assets/images/imageGalery/1667169030924.jpg");
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -32,6 +32,7 @@ function Home() {
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
+        mapType="hybrid"
         initialRegion={{
           latitude: 43.98807455261303,
           longitude: 18.185855229173505,
@@ -67,7 +68,7 @@ function Home() {
 function GaleryMap(props) {
   return (
     <ScrollView>
-      <Text style={styles.text}>Galerija slika</Text>
+      <Text style={styles.textGalery}>Galerija slika</Text>
       <View style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {Galery.map((image, index) => (
           <TouchableOpacity
@@ -92,37 +93,34 @@ function GaleryMap(props) {
   );
 }
 
-// function Profile() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//       <Text style={styles.text}>Profile!</Text>
-//     </View>
-//   );
-// }
-
 function PriceList({ navigation }) {
   return (
-      <ImageBackground style={styles.containerWrapper} resizeMode="cover" source={image} opacity={0.6} >
-        <Image
+    <ImageBackground
+      style={styles.containerWrapper}
+      // resizeMode="cover"
+      source={image}
+      opacity={0.6}
+    >
+      {/* <Image
           style={styles.logo}
           source={require("../../../../assets/images/SKLOGOPNG.png")}
-        />
-        <Text style={styles.text}>Cijene za clanove i redovne cijene</Text>
-        <View>
-          <TouchableOpacity
-            style={styles.priceButton}
-            onPress={() => navigation.navigate("Strelište Žuč")}
-          >
-            <Text style={styles.info}>Strelište Žuč</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.priceButton}
-            onPress={() => navigation.navigate("Strelište Visoko")}
-          >
-            <Text style={styles.info}>Strelište Visoko</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
+        /> */}
+      <Text style={styles.text}>Cijene za clanove i redovne cijene</Text>
+      <View>
+        <TouchableOpacity
+          style={styles.priceButton}
+          onPress={() => navigation.navigate("Strelište Žuč")}
+        >
+          <Text style={styles.info}>Strelište Žuč</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.priceButton}
+          onPress={() => navigation.navigate("Strelište Visoko")}
+        >
+          <Text style={styles.info}>Strelište Visoko</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 }
 
@@ -166,16 +164,6 @@ function PriceScreen() {
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarLabel: "Profil",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={28} />
-          ),
-        }}
-      /> */}
     </Tab.Navigator>
   );
 }
@@ -193,22 +181,22 @@ const styles = StyleSheet.create({
   },
   map: {
     width: Dimensions.get("window").width,
-    height: 450,
+    height: 600,
     borderWidth: 0.3,
   },
   text: {
-    justifyContent: "center",
     textAlign: "center",
     fontWeight: "bold",
     padding: 20,
     fontSize: 20,
+    paddingTop: 490
   },
   termin: {
     textAlign: "center",
     fontWeight: "bold",
     padding: 20,
     fontSize: 20,
-    marginTop: 80,
+    marginTop: 30,
   },
   logo: {
     width: 300,
@@ -234,10 +222,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
-  bgImage: {
-    flex: 1,
-    justifyContent: "center",
-    position: "relative",
-    opacity: 0.3,
-  },
+  textGalery: {
+    textAlign: "center",
+    fontWeight: "bold",
+    padding: 20,
+    fontSize: 20,
+  }
 });

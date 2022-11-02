@@ -12,8 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 const Tab = createMaterialBottomTabNavigator();
 const image = require("../../../../assets/images/imageGalery/image7.png");
 
-function Home() {
-  return (
+function Home() {   return (
     <ImageBackground
       style={styles.imageBcg}
       resizeMode="cover"

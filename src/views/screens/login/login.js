@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { View } from "native-base";
 import React from "react";
 import { useState } from "react";
 import {
+  View,
   StyleSheet,
   TextInput,
   Image,
@@ -17,7 +17,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-const UselessTextInput = ({navigation}) => {
+const UselessTextInput = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [seePassword, setSeePassword] = useState(true);
@@ -29,7 +29,7 @@ const UselessTextInput = ({navigation}) => {
     Linking.openURL(url);
   };
 
-  const image = require("../../../../assets/images/imageGalery/image4.png");
+  const image = require("../../../../assets/images/imageGalery/Background.jpg");
 
   const handleCheckEmail = (text) => {
     let re = /\S+@\S+\.\S+/;
@@ -88,57 +88,66 @@ const UselessTextInput = ({navigation}) => {
   };
 
   return (
-    <ImageBackground
-      style={styles.container}
-      resizeMode="cover"
-      source={image}
-      opacity={0.5}
-    >
-      <Image
-        style={styles.logo}
-        source={require("../../../../assets/images/launch_screen.png")}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={(text) => handleCheckEmail(text)}
-      />
-      {checkValidEmail ? (
-        <Text style={styles.textFailed}>Invalid Email</Text>
-      ) : (
-        <Text style={styles.textFailed}></Text>
-      )}
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        secureTextEntry={seePassword}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <TouchableOpacity
-        style={styles.wrapperIcon}
-        onPress={() => setSeePassword(!seePassword)}
+    <View style={styles.container}>
+      <ImageBackground
+        resizeMode="cover"
+        source={image}
+        opacity={0.5}
+        style={{ width: "100%", height: "100%" }}
       >
-        <Image source={seePassword ? Eye : EyeActive} style={styles.icon} />
-      </TouchableOpacity>
-      {email == "" || password == "" || checkValidEmail == true ? (
-        <TouchableOpacity disabled style={styles.loginBtn} onPress={handleLoging}>
-          <Text style={styles.login}>LOGIN</Text>
+        <Image
+          style={styles.logo}
+          source={require("../../../../assets/images/launch_screen.png")}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => handleCheckEmail(text)}
+        />
+        {checkValidEmail ? (
+          <Text style={styles.textFailed}>Invalid Email</Text>
+        ) : (
+          <Text style={styles.textFailed}></Text>
+        )}
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          value={password}
+          secureTextEntry={seePassword}
+          onChangeText={(text) => setPassword(text)}
+        />
+        <TouchableOpacity
+          style={styles.wrapperIcon}
+          onPress={() => setSeePassword(!seePassword)}
+        >
+          <Image source={seePassword ? Eye : EyeActive} style={styles.icon} />
         </TouchableOpacity>
-      ) : (
-        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate("Member")}>
-          <Text style={styles.login}>LOGIN</Text>
+        {email == "" || password == "" || checkValidEmail == true ? (
+          <TouchableOpacity
+            disabled
+            style={styles.loginBtn}
+            onPress={handleLoging}
+          >
+            <Text style={styles.login}>LOGIN</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.loginBtn}
+            onPress={() => navigation.navigate("Member")}
+          >
+            <Text style={styles.login}>LOGIN</Text>
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity>
+          <Text style={styles.forgot_button}>Forgot Password?</Text>
         </TouchableOpacity>
-      )}
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <Text style={styles.link} onPress={onPress}>
-        wwww.4Tactic.ba
-      </Text>
-      <StatusBar style="auto" />
-    </ImageBackground>
+        <Text style={styles.link} onPress={onPress}>
+          wwww.4Tactic.ba
+        </Text>
+        <StatusBar style="auto" />
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -147,15 +156,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#ffff",
+    backgroundColor:'repeat',
   },
-
   logo: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
+    marginTop: 100,
     marginBottom: 80,
     alignSelf: "center",
   },
-
   input: {
     width: "85%",
     borderRadius: 5,
@@ -169,7 +178,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
   },
-
   loginBtn: {
     width: "85%",
     borderRadius: 5,
@@ -177,23 +185,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: 13,
+    marginTop: 29,
     backgroundColor: "#dabf66",
     borderWidth: 1,
   },
-
   login: {
     fontSize: 20,
     fontWeight: "bold",
   },
-
   forgot_button: {
     fontSize: 17,
     alignSelf: "center",
     paddingTop: 20,
     fontWeight: "bold",
   },
-
   link: {
     alignSelf: "center",
     marginTop: 20,
@@ -212,7 +217,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 40,
     padding: 10,
-    bottom: 227,
+    bottom: 255,
   },
 });
 
