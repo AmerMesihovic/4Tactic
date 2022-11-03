@@ -21,7 +21,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Galery from "../galery/GaleryScreen";
 
 const Stack = createNativeStackNavigator();
-const image = require("../../../../assets/images/imageGalery/1667169030924.jpg");
+const image = require("../../../../assets/images/imageGalery/Background.jpg");
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -97,14 +97,14 @@ function PriceList({ navigation }) {
   return (
     <ImageBackground
       style={styles.containerWrapper}
-      // resizeMode="cover"
+      resizeMode="cover"
       source={image}
       opacity={0.6}
     >
-      {/* <Image
+      <Image
           style={styles.logo}
-          source={require("../../../../assets/images/SKLOGOPNG.png")}
-        /> */}
+          source={require("../../../../assets/images/imageGalery/LogoHD.png")}
+        />
       <Text style={styles.text}>Cijene za clanove i redovne cijene</Text>
       <View>
         <TouchableOpacity
@@ -173,11 +173,13 @@ export default PriceScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // justifyContent:"space-around"
   },
   containerWrapper: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    // marginBottom: 10
   },
   map: {
     width: Dimensions.get("window").width,
@@ -189,7 +191,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: 20,
     fontSize: 20,
-    paddingTop: 490
+    // justifyContent:"space-between"
+    // paddingTop: 490
   },
   termin: {
     textAlign: "center",
@@ -199,9 +202,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   logo: {
-    width: 300,
-    height: 300,
-    marginBottom: 50,
+    width: 200,
+    height: 200,
+    marginBottom: 90, 
   },
   priceButton: {
     width: 355,
