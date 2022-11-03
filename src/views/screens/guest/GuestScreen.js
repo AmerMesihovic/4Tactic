@@ -12,8 +12,8 @@ export default function HomeScreen ({ navigation }) {
   const image = require("../../../../assets/images/imageGalery/image12.jpeg")
 
   return (
-      <ImageBackground style={styles.container} resizeMode='cover' source={image} opacity={0.6}>
-          <Image style={styles.logo} source={require("../../../../assets/images/SKLOGOPNG.png")} />
+      <ImageBackground style={styles.container} resizeMode='cover' source={image} opacity={0.4}>
+          <Image style={styles.logo} source={require("../../../../assets/images/imageGalery/LogoHD.png")} />
             <TouchableOpacity style={styles.loginBtn}
                 onPress={() => navigation.navigate("Guest Screen")}>
                 <Text style={styles.login}>GUEST</Text>
@@ -61,10 +61,11 @@ const styles = StyleSheet.create({
    },
 
    logo: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     marginBottom: 50,
     alignSelf: 'center',
+    opacity: 0.7
   },
 
   link: {

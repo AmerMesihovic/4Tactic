@@ -97,7 +97,7 @@ const UselessTextInput = ({ navigation }) => {
       >
         <Image
           style={styles.logo}
-          source={require("../../../../assets/images/launch_screen.png")}
+          source={require("../../../../assets/images/imageGalery/LogoHD.png")}
         />
         <TextInput
           style={styles.input}
@@ -164,6 +164,8 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginBottom: 80,
     alignSelf: "center",
+    opacity: 0.7
+
   },
   input: {
     width: "85%",
