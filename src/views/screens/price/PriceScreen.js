@@ -68,7 +68,10 @@ function Home() {
 function GaleryMap(props) {
   return (
     <ScrollView>
+      <View style={styles.header}>
       <Text style={styles.textGalery}>Galerija slika</Text>
+      <Image style={{ width: 25, height: 25, marginTop: 20 }} source={require("../../../../assets/images/launch_screen.png")}></Image>
+      </View>
       <View style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {Galery.map((image, index) => (
           <TouchableOpacity
@@ -202,9 +205,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
     marginBottom: 90, 
+    opacity: 0.7
   },
   priceButton: {
     width: 355,
@@ -230,5 +234,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: 20,
     fontSize: 20,
+  },
+  header: {
+    flexDirection:"row",
+    justifyContent:'center'
+
   }
 });
