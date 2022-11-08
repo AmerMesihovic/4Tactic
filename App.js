@@ -9,8 +9,8 @@ import PriceScreen from "./src/views/screens/price/PriceScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ShowImage from "./src/components/ShowImage";
 import Member from "./src/views/screens/member/Memberscreen";
-import ArchersVisoko from "./src/views/screens/archersScreen/archersVisoko/ArchersVisoko";
 import ArchersZuc from "./src/views/screens/archersScreen/archersZuc/ArchersZuc";
+import ArchersVisoko from "./src/views/screens/archersScreen/archersVisoko/ArchersVisoko";
 
 export default function App() {
   const Stack = createNativeStackNavigator();

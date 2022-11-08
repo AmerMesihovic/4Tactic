@@ -1,117 +1,112 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { DataTable } from 'react-native-paper';
-  
-export default class ArchersZuc extends Component {
+import React from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
+import DataTable, { COL_TYPES } from "react-native-datatable-component";
 
-  render() {
-    return (
-        <DataTable style={styles.container}>
-                <DataTable.Row>
-                    <DataTable.Cell style={{ flex: 3 }}>Godišnja članarina </DataTable.Cell>
-                    <DataTable.Cell></DataTable.Cell>
-                    <DataTable.Cell>100,00 KM</DataTable.Cell>
-                </DataTable.Row>
+const App = () => {
+  const data = [
+    {
+      Naziv: "Godišnja članarina",
+      "Redovna cijena": "100,00 KM",
+    },
+    {},
+    {
+      Naziv: "Naknada korištenja strelišta",
+      "Cijena za članove": "5,00 KM",
+      "Redovna cijena": "5,00 KM",
+    },
+    {
+      Naziv: "Sa sopstvenom municijom, sat vremena po liniji",
+      "Cijena za članove": "10,00 KM",
+      "Redovna cijena": "10,00 KM",
+    },
+    { Naziv: "" },
+    {
+      Naziv: "Pištoljski metak 9x19 mm",
+      "Cijena za članove": "0,50 KM",
+      "Redovna cijena": "0,70 KM",
+    },
+    {
+      Naziv: "Pištoljski metak 45 cal",
+      "Cijena za članove": "1,50 KM",
+      "Redovna cijena": "1,70 KM",
+    },
+    {
+      Naziv: "Municija za revolver 357 mag ili 38 special",
+      "Cijena za članove": "§",
+      "Redovna cijena": "1,50 KM",
+    },
+    {
+      Naziv: "Malokalibarska municija 22LR",
+      "Cijena za članove": "0,30 KM",
+      "Redovna cijena": "0,40 KM",
+    },
+    {
+      Naziv: "Puščana municija 7.62x39",
+      "Cijena za članove": "0,50 KM",
+      "Redovna cijena": "0,70 KM",
+    },
+    {
+      Naziv: "Puščana municija 5.56 ili 223",
+      "Cijena za članove": "1,00 KM",
+      "Redovna cijena": "1,20 KM",
+    },
+    {
+      Naziv: "Municija sačma 12cal",
+      "Cijena za članove": "1,00 KM",
+      "Redovna cijena": "1,20 KM",
+    },
+    {},
+    {
+      Naziv: "Pištolj, puške",
+      "Cijena za članove": "5,00 KM",
+      "Redovna cijena": "10,00 KM",
+    },
+    {
+      Naziv: "Instruktor 1 sat",
+      "Cijena za članove": "25,00 KM",
+      "Redovna cijena": "35,00 KM",
+    },
+    {
+      Naziv: "Meta silueta ( prva gratis)",
+      "Cijena za članove": "0.50 KM",
+      "Redovna cijena": "1,00 KM",
+    },
+  ];
 
-                <DataTable.Header style={styles.tableHeader}>
-                    <DataTable.Title>Naziv</DataTable.Title>
-                    <DataTable.Title style={styles.cell}>Cijena za članove</DataTable.Title>
-                    <DataTable.Title style={styles.cell}>Redovna cijena</DataTable.Title>
-                </DataTable.Header>
-            
-                <DataTable.Row>
-                    <DataTable.Cell>Naknada korištenja strelišta</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>5,00 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>5,00 KM</DataTable.Cell>
-                </DataTable.Row>
+  const colSettings = [
+    { name: "Naziv", type: COL_TYPES.STRING, width: "45%" },
+    { name: "Cijena za članove", type: COL_TYPES.INT, width: "27.5%" },
+    { name: "Redovna cijena", type: COL_TYPES.INT, width: "27.5%" },
+  ];
 
-                <DataTable.Row>
-                    <DataTable.Cell>Sa sopstvenom municijom, sat vremena po liniji</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>10,00 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>10,00 KM</DataTable.Cell>
-                </DataTable.Row>
+  const colNames = ["Naziv", "Cijena za članove", "Redovna cijena"];
 
-                <DataTable.Header style={styles.tableHeader}>
-                    <DataTable.Title>Cijena municije</DataTable.Title>
-                    <DataTable.Title style={styles.cell}>Cijena za članove</DataTable.Title>
-                    <DataTable.Title style={styles.cell}>Redovna cijena</DataTable.Title>
-                </DataTable.Header>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Pištoljski metak 9x19 mm</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,50 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,70 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Pištoljski metak 45 cal</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,50 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,70 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Municija za revolver 357 mag ili 38 special</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>§</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,50 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Malokalibarska municija 22LR</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,30 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,40 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Puščana municija 7.62x39</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,50 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,70 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Puščana municija 5.56 ili 223 </DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,00 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,20 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Municija sačma 12cal</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,00 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,20 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Header style={styles.tableHeader}>
-                    </DataTable.Header>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Pištolj, puške</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>5,00 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>10,00 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>Instruktor 1 sat</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>25,00 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>35,00 KM</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>PMeta silueta ( prva gratis)</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>0,50 KM</DataTable.Cell>
-                    <DataTable.Cell style={styles.cell}>1,00 KM</DataTable.Cell>
-                </DataTable.Row>
-        </DataTable>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <DataTable
+          data={data}
+          colNames={colNames}
+          colSettings={colSettings}
+          backgroundColor={"#CCCAC9"}
+          headerLabelStyle={{
+            color: "black",
+            fontSize: 15,
+            textAlign: "center",
+            fontWeight: "bold",
+          }}
+          noOfPages={20}
+        ></DataTable>
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-      padding: 5,
-    },
-    tableHeader: {
-      backgroundColor: '#DCDCDC',
-    },
-    cell: {
-        justifyContent: "flex-end",
-    }
-  });
+  container: {
+    flex: 1,
+    padding: 5,
+  },
+});
+
+export default App;
