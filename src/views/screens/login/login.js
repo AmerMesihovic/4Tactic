@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: 13,
+    marginTop: 5,
     backgroundColor: "#dabf66",
     borderWidth: 1,
     textAlign: "center",
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: 29,
+    marginTop: 20,
     backgroundColor: "#dabf66",
     borderWidth: 1,
   },
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 40,
     padding: 10,
-    bottom: 255,
+    bottom: 270,
   },
 });
 
