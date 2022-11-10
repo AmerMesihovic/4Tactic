@@ -7,7 +7,7 @@ import {
   Text,
   Linking,
   Alert,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView, TextInput } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -52,13 +52,18 @@ export default function Register({}) {
   };
 
   return (
-    <ImageBackground style={styles.container} resizeMode='cover' source={image} opacity={0.4}>
+    <ImageBackground
+      style={styles.container}
+      resizeMode="cover"
+      source={image}
+      opacity={0.4}
+    >
       <View>
         <SafeAreaView>
           <ScrollView horizontal={false}>
             <Image
               style={styles.logo}
-              source={require('../../../../assets/images/imageGalery/LogoHD.png')}
+              source={require("../../../../assets/images/imageGalery/LogoHD.png")}
             />
             <TextInput
               style={styles.input}
@@ -88,16 +93,15 @@ export default function Register({}) {
               onChangeText={(brojTel) => setBrojTel(brojTel)}
             />
             <View style={styles.containerTwo}>
-              <TouchableOpacity style={styles.inputButton}>
-                <Text style={styles.login}>Broj licne karte</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={printAlert3}
-                style={styles.smallButton}
-              >
+              <TextInput
+                style={styles.inputId}
+                placeholder="Broj licne karte"
+              />
+              <TouchableOpacity onPress={printAlert} style={styles.smallButton}>
                 <Text style={styles.info}>i</Text>
               </TouchableOpacity>
             </View>
+
             <View style={styles.containerTwo}>
               <TouchableOpacity style={styles.inputButton}>
                 <Text style={styles.login}>SLIKA</Text>
@@ -175,7 +179,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginBottom: 20,
     marginTop: 20,
-    opacity: 0.8
+    opacity: 0.8,
   },
 
   input: {
@@ -186,6 +190,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     marginTop: 13,
+    backgroundColor: "#dabf66",
+    borderWidth: 1,
+    textAlign: "center",
+    fontSize: 20,
+  },
+
+  inputId: {
+    width: 300,
+    borderRadius: 5,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
     backgroundColor: "#dabf66",
     borderWidth: 1,
     textAlign: "center",
