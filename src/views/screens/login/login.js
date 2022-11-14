@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
 import Eye from "../../../../assets/icons/Eye.png";
 import EyeActive from "../../../../assets/icons/EyeActive.png";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { carNewsService } from "../../../helpers/APIClient";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,47 @@ const UselessTextInput = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [seePassword, setSeePassword] = useState(true);
   const [checkValidEmail, setCheckValidEmail] = useState(false);
+
+  const [cars, setCars] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // ekvivaltent componentDidMount
+  // VERZIJA 1
+  // useEffect(() => {
+  //   const onInit = async () => {
+  //     setIsLoading(true);
+
+  //     const data = await carNewsService.getCarNews();
+
+  //     setIsLoading(false);
+
+  //     if (data === -1) {
+  //       setCars([]);
+  //       return;
+  //     }
+
+  //     setCars(data);
+  //   };
+
+  //   onInit();
+  // }, []);
+
+  // VERZIJA 2
+  useEffect(() => {
+    const onInit = async () => {
+      setIsLoading(true);
+      try {
+        const result = await carNewsService.getCarNewVersionTwo();
+        setCars(result.data);
+      } catch (err) {
+        setCars([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    onInit();
+  }, []);
 
   const onPress = async () => {
     const url = "https://www.sk4tactic.ba/";
@@ -145,6 +187,13 @@ const UselessTextInput = ({ navigation }) => {
         <Text style={styles.link} onPress={onPress}>
           wwww.4Tactic.ba
         </Text>
+
+        {isLoading ? (
+          <Text>LOADING</Text>
+        ) : (
+          cars.map((car) => <Text>{car.title}</Text>)
+        )}
+
         <StatusBar style="auto" />
       </ImageBackground>
     </View>
@@ -156,7 +205,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#ffff",
-    backgroundColor:'repeat',
+    backgroundColor: "repeat",
   },
   logo: {
     width: 250,
@@ -164,8 +213,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginBottom: 80,
     alignSelf: "center",
-    opacity: 0.7
-
+    opacity: 0.7,
   },
   input: {
     width: "85%",
