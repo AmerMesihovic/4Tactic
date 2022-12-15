@@ -7,8 +7,9 @@ import {
   Image,
   Linking,
   ImageBackground,
-  TextInput
+  TextInput,
 } from "react-native";
+import { useEffect, useState } from "react";
 
 export default function HomeScreen({ navigation }) {
   const onPress = async () => {

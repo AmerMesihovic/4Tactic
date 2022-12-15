@@ -4,17 +4,30 @@ import { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
-  TextInput,
   Image,
   TouchableOpacity,
   Text,
   Linking,
   ImageBackground,
+  Alert,
 } from "react-native";
 import Eye from "../../../../assets/icons/Eye.png";
 import EyeActive from "../../../../assets/icons/EyeActive.png";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { carNewsService } from "../../../helpers/APIClient";
+import TextInput from "../../../components/TextInput";
+import axios from "axios";
+
+const login = async (username, password) => {
+  try {
+    const response = await axios.post("https://your-api-endpoint.com/login", {
+      username,
+      password,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 const Stack = createNativeStackNavigator();
 
@@ -23,47 +36,7 @@ const UselessTextInput = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [seePassword, setSeePassword] = useState(true);
   const [checkValidEmail, setCheckValidEmail] = useState(false);
-
-  const [cars, setCars] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // ekvivaltent componentDidMount
-  // VERZIJA 1
-  // useEffect(() => {
-  //   const onInit = async () => {
-  //     setIsLoading(true);
-
-  //     const data = await carNewsService.getCarNews();
-
-  //     setIsLoading(false);
-
-  //     if (data === -1) {
-  //       setCars([]);
-  //       return;
-  //     }
-
-  //     setCars(data);
-  //   };
-
-  //   onInit();
-  // }, []);
-
-  // VERZIJA 2
-  useEffect(() => {
-    const onInit = async () => {
-      setIsLoading(true);
-      try {
-        const result = await carNewsService.getCarNewVersionTwo();
-        setCars(result.data);
-      } catch (err) {
-        setCars([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    onInit();
-  }, []);
+  const [username, setUserName] = useState("");
 
   const onPress = async () => {
     const url = "https://www.sk4tactic.ba/";
@@ -111,21 +84,17 @@ const UselessTextInput = ({ navigation }) => {
       return "Password must be 8-16 Characters Long.";
     }
 
-    // const isContainsSymbol =
-    //   /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
-    // if (!isContainsSymbol.test(value)) {
-    //   return 'Password must contain at least one Special Symbol.';
-    // }
-
     return null;
   };
 
-  const handleLoging = () => {
-    const checkPassword = checkPasswordValidity(password);
-    if (!checkPassword) {
-      alert("Success Login");
-    } else {
-      alert(checkPassword);
+  const handleLogin = async () => {
+    try {
+      const data = await login(username, password);
+      Alert.alert("Sucess", "You have successfully logged in", [
+        { text: "OK", onPress: () => navigation.navigate("Member") },
+      ]);
+    } catch (error) {
+      Alert.alert("Error", "There was an error logging in. Please try again.");
     }
   };
 
@@ -142,6 +111,19 @@ const UselessTextInput = ({ navigation }) => {
           source={require("../../../../assets/images/imageGalery/LogoHD.png")}
         />
         <TextInput
+          label="Username"
+          returnKeyType="next"
+          value={username}
+          onChangeText={(text) => setUserName(text)}
+        />
+        <TextInput
+          label="Password"
+          returnKeyType="next"
+          value={password}
+          secureTextEntry={seePassword}
+          onChangeText={(text) => setPassword(text)}
+        />
+        {/* <TextInput
           style={styles.input}
           placeholder="Email"
           value={email}
@@ -158,7 +140,7 @@ const UselessTextInput = ({ navigation }) => {
           value={password}
           secureTextEntry={seePassword}
           onChangeText={(text) => setPassword(text)}
-        />
+        /> */}
         <TouchableOpacity
           style={styles.wrapperIcon}
           onPress={() => setSeePassword(!seePassword)}
@@ -169,7 +151,7 @@ const UselessTextInput = ({ navigation }) => {
           <TouchableOpacity
             disabled
             style={styles.loginBtn}
-            onPress={handleLoging}
+            onPress={handleLogin}
           >
             <Text style={styles.login}>LOGIN</Text>
           </TouchableOpacity>
@@ -187,13 +169,6 @@ const UselessTextInput = ({ navigation }) => {
         <Text style={styles.link} onPress={onPress}>
           wwww.4Tactic.ba
         </Text>
-
-        {isLoading ? (
-          <Text>LOADING</Text>
-        ) : (
-          cars.map((car) => <Text>{car.title}</Text>)
-        )}
-
         <StatusBar style="auto" />
       </ImageBackground>
     </View>
@@ -267,7 +242,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 40,
     padding: 10,
-    bottom: 270,
+    bottom: 215,
   },
 });
 

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import {
   Text,
   View,
@@ -59,7 +60,7 @@ function Home() {
         />
       </MapView>
       <Text style={styles.termin}>
-        Slijedeci termin za trening je u Utorak u 14:00
+        Slijedeci termin za trening je u Utorak u 14:00h
       </Text>
     </View>
   );
@@ -69,8 +70,11 @@ function GaleryMap(props) {
   return (
     <ScrollView>
       <View style={styles.header}>
-      <Text style={styles.textGalery}>Galerija slika</Text>
-      <Image style={{ width: 25, height: 25, marginTop: 20 }} source={require("../../../../assets/images/launch_screen.png")}></Image>
+        <Text style={styles.textGalery}>Galerija slika</Text>
+        <Image
+          style={{ width: 25, height: 25, marginTop: 20 }}
+          source={require("../../../../assets/images/launch_screen.png")}
+        ></Image>
       </View>
       <View style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {Galery.map((image, index) => (
@@ -105,9 +109,9 @@ function PriceList({ navigation }) {
       opacity={0.6}
     >
       <Image
-          style={styles.logo}
-          source={require("../../../../assets/images/imageGalery/LogoHD.png")}
-        />
+        style={styles.logo}
+        source={require("../../../../assets/images/imageGalery/LogoHD.png")}
+      />
       <Text style={styles.text}>Cijene za clanove i redovne cijene</Text>
       <View>
         <TouchableOpacity
@@ -176,17 +180,17 @@ export default PriceScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent:"space-around"
+    marginBottom: 20,
   },
   containerWrapper: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    // marginBottom: 10
+    flex: 2,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // marginBottom: 10,
   },
   map: {
     width: Dimensions.get("window").width,
-    height: 600,
+    height: 500,
     borderWidth: 0.3,
   },
   text: {
@@ -198,17 +202,20 @@ const styles = StyleSheet.create({
     // paddingTop: 490
   },
   termin: {
+    // justifyContent: "center",
+    // alignContent: "center",
+    // alignItems: "center",
     textAlign: "center",
     fontWeight: "bold",
-    padding: 20,
+    // padding: 20,
     fontSize: 20,
     marginTop: 30,
   },
   logo: {
     width: 250,
     height: 250,
-    marginBottom: 90, 
-    opacity: 0.7
+    marginBottom: 90,
+    opacity: 0.7,
   },
   priceButton: {
     width: 355,
@@ -236,8 +243,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   header: {
-    flexDirection:"row",
-    justifyContent:'center'
-
-  }
+    flexDirection: "row",
+    justifyContent: "center",
+  },
 });
