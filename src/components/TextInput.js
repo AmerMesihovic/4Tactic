@@ -71,8 +71,9 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   input: {
-    // backgroundColor: theme.colors.surface,
+    backgroundColor: theme.colors.surface,
     backgroundColor: "#dabf66",
+    width: "80%",
   },
   inputSection: {
     justifyContent: "center",

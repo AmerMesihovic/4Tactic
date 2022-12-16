@@ -179,14 +179,13 @@ export default PriceScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginBottom: 20,
+    // flex: 1,
+    // marginBottom: 20,
   },
   containerWrapper: {
-    flex: 2,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // marginBottom: 10,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   map: {
     width: Dimensions.get("window").width,
@@ -198,16 +197,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: 20,
     fontSize: 20,
-    // justifyContent:"space-between"
-    // paddingTop: 490
   },
   termin: {
-    // justifyContent: "center",
-    // alignContent: "center",
-    // alignItems: "center",
     textAlign: "center",
     fontWeight: "bold",
-    // padding: 20,
     fontSize: 20,
     marginTop: 30,
   },

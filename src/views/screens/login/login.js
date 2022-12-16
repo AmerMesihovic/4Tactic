@@ -16,6 +16,10 @@ import EyeActive from "../../../../assets/icons/EyeActive.png";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TextInput from "../../../components/TextInput";
 import axios from "axios";
+import loginCredentials from "../../../../loginCredentials.json";
+
+const username = loginCredentials.username;
+const password = loginCredentials.password;
 
 const login = async (username, password) => {
   try {
@@ -116,6 +120,7 @@ const UselessTextInput = ({ navigation }) => {
           value={username}
           onChangeText={(text) => setUserName(text)}
         />
+
         <TextInput
           label="Password"
           returnKeyType="next"
@@ -232,7 +237,7 @@ const styles = StyleSheet.create({
   textFailed: {
     alignSelf: "center",
     color: "red",
-    marginTop: 2,
+    marginTop: 1,
   },
   icon: {
     width: 30,
