@@ -21,17 +21,17 @@ import loginCredentials from "../../../../loginCredentials.json";
 const username = loginCredentials.username;
 const password = loginCredentials.password;
 
-const login = async (username, password) => {
-  try {
-    const response = await axios.post("https://your-api-endpoint.com/login", {
-      username,
-      password,
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
+// const login = async (username, password) => {
+//   try {
+//     const response = await axios.post("https://your-api-endpoint.com/login", {
+//       username,
+//       password,
+//     });
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 const Stack = createNativeStackNavigator();
 
